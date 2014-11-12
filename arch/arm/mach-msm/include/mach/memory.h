@@ -20,6 +20,14 @@
 /* physical offset of RAM */
 #define PLAT_PHYS_OFFSET UL(CONFIG_PHYS_OFFSET)
 
+#if defined(CONFIG_KEXEC_HARDBOOT)
+#if defined(CONFIG_MACH_BLUE_HAYABUSA) || defined(CONFIG_MACH_BLUE_MINT) || defined(CONFIG_MACH_BLUE_TSUBASA)
+#define KEXEC_HB_PAGE_ADDR		UL(0x88000000)
+#else
+#error "Address for kexec hardboot page not defined"
+#endif
+#endif
+
 #define MAX_PHYSMEM_BITS 32
 #define SECTION_SIZE_BITS 28
 
